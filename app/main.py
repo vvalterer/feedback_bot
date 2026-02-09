@@ -22,7 +22,7 @@ async def main():
     bot = Bot(token=settings.bot_token)
     dp = Dispatcher()
 
-    dp.include_routers(feature.router, help_text.router)
+    dp.include_routers(help_text.router, feature.router)
 
     logger.info("Bot started!")
     await dp.start_polling(bot)

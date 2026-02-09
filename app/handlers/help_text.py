@@ -4,6 +4,7 @@ Help and start command handlers.
 from aiogram import Router
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
+from aiogram.enums import ParseMode
 
 router = Router(name=__name__)
 
@@ -28,4 +29,4 @@ async def cmd_start(message: Message):
 @router.message(Command("help"))
 async def cmd_help(message: Message):
     """Handle /help command."""
-    await message.answer(HELP_TEXT)
+    await message.answer(HELP_TEXT, parse_mode=ParseMode.HTML)
