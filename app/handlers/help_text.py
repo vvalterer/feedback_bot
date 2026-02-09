@@ -1,0 +1,21 @@
+from aiogram import Router
+from aiogram.filters import CommandStart, Command
+from aiogram.types import Message
+
+router = Router(name=__name__)
+
+HELP_TEXT = """
+🤖 <b>Feedback Form Bot — Вячеслав Ветошкин</b>
+
+Доступные команды:
+/start — запуск
+/help — помощь
+"""
+
+@router.message(CommandStart())
+async def cmd_start(message: Message):
+    await message.answer("Привет! Я бот Feedback Form под брендом Вячеслав Ветошкин.\nНапиши /help или просто отправь сообщение.")
+
+@router.message(Command("help"))
+async def cmd_help(message: Message):
+    await message.answer(HELP_TEXT)
