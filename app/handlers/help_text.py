@@ -1,3 +1,6 @@
+"""
+Help and start command handlers.
+"""
 from aiogram import Router
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
@@ -12,10 +15,17 @@ HELP_TEXT = """
 /help — помощь
 """
 
+
 @router.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer("Привет! Я бот Feedback Form под брендом Вячеслав Ветошкин.\nНапиши /help или просто отправь сообщение.")
+    """Handle /start command."""
+    await message.answer(
+        "Привет! Я бот Feedback Form под брендом Вячеслав Ветошкин.\n"
+        "Напиши /help или просто отправь сообщение."
+    )
+
 
 @router.message(Command("help"))
 async def cmd_help(message: Message):
+    """Handle /help command."""
     await message.answer(HELP_TEXT)

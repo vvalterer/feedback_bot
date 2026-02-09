@@ -1,3 +1,6 @@
+"""
+Application configuration loaded from environment variables.
+"""
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field, field_validator
 from typing import List, Union
@@ -6,7 +9,7 @@ import os
 
 class Settings(BaseSettings):
     """Application configuration loaded from environment variables."""
-    
+
     bot_token: str = Field(..., alias="BOT_TOKEN")
     admin_ids: List[int] = Field(default_factory=list, alias="ADMIN_IDS")
     db_path: str = Field(default="data/database.sqlite3", alias="DB_PATH")
@@ -39,4 +42,3 @@ class Settings(BaseSettings):
 
 # Global instance
 settings = Settings()
-
